@@ -20,7 +20,7 @@ export default function Data() {
           <List  >
             <Link to="Tododata" className='link'>
               <ListItemButton sx={{ pl: 4 }}>
-                <ListItemText primary="todos" />
+                <ListItemText primary="Todos" />
               </ListItemButton>
               <Divider />
             </Link>
@@ -28,7 +28,7 @@ export default function Data() {
           <List  >
             <Link to="Postdata" className='link'>
               <ListItemButton sx={{ pl: 4 }}>
-                <ListItemText primary="posts" />
+                <ListItemText primary="Posts" />
               </ListItemButton>
               <Divider />
             </Link>
@@ -36,12 +36,10 @@ export default function Data() {
           <List >
             <Link to="Commentdata" className='link'>
             <ListItemButton sx={{ pl: 4 }}>
-              <ListItemText primary="comments" />
+              <ListItemText primary="Comments" />
             </ListItemButton>
            </Link>
       </List>
-
-            
         </div >
 
     )

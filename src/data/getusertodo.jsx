@@ -9,7 +9,6 @@ import { useParams } from 'react-router-dom'
 
 export const Getusertodo = () => {
   const id = useParams();
-  console.log("todo", id.id)
   const [data, setdata] = useState([]);
   const [addtodo, setAddtodo] = useState(false);
   const [progress, setProgress] = useState(false)
@@ -67,7 +66,7 @@ export const Getusertodo = () => {
       {
         addtodo &&
         <Dialog className="dailogposition" open={addtodo} >
-          <DialogTitle style={{ display: "flex", justifyContent: 'space-between', backgroundColor: '#d3eff8' }}> Add Todo Details
+          <DialogTitle style={{ display: "flex", justifyContent: 'space-between', backgroundColor: '#d3eff8' }}> Add Todo 
             <IconButton onClick={() => { setAddtodo(false) }} >
               < CancelOutlinedIcon style={{fontSize:'20px'}}/>
             </IconButton>

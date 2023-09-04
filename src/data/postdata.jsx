@@ -17,7 +17,7 @@ export const Postdata = () => {
 
   return (
     <div>
-      <span style={{ fontSize: "30px" }}>Post Data</span>
+      <span style={{ fontSize: "30px" }}>PostsData</span>
       <hr />
       <TableContainer component={Paper} sx={{ height: 550, tableLayout: 'fixed' }}>
         <Table stickyHeader>

@@ -1,11 +1,9 @@
 import React from 'react'
 import { Card, Grid } from "@mui/material";
-// import  from '@mui/material/RadioGroup';
 import { useState, useEffect } from 'react';
 import { Statusdialog } from '../manipulation/statusdailog';
 import Axiosinstance from '../data/axiosinstance';
 import Radio from '@mui/material/Radio';
-
 
 export const Adduser = (props) => {
     const [input, setinput] = useState({
@@ -13,16 +11,13 @@ export const Adduser = (props) => {
         email: props.id.email,
         gender: props.id.gender,
         status: props.id.status,
-
     })
     const [error, seterror] = useState({
         name: '',
         email: '',
         gender: '',
         status: '',
-
     })
-
     useEffect(() => {
         seterror(error)
         console.log(error);
@@ -30,7 +25,6 @@ export const Adduser = (props) => {
 
     const [disable, setDisable] = useState(true)
     const [status, setstatus] = useState(false);
-
     const Createuser = (e) => {
         const user = { ...input, [e.target.name]: e.target.value }
         const dataToSend = {
@@ -90,10 +84,8 @@ export const Adduser = (props) => {
     const Handleadduser = () => {
         props.close(false)
     }
-
     return (
         <div className='main'>
-            {console.log("ssd",input)}
             <Card className='card'>
                 <Grid margin={'10px'}>
                     <span> {props.id.id ? "Edit user details" : "Provide User details"}</span>

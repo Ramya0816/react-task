@@ -4,7 +4,6 @@ import { Dialog, DialogTitle, DialogActions, DialogContentText , Button } from '
 
 
 export const Statusdialog=(props)=>{
-    console.log("calling");
     const [status, setstatus] = useState(true);
     const handle = ()=>{
         setstatus(false); 

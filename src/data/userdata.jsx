@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect, useState, } from "react"
 import { Table, TableBody, TableCell, TableContainer, TableRow, TableHead } from '@mui/material';
-import { Box, Collapse, ButtonGroup, Button, IconButton, Paper, Dialog, LinearProgress, DialogTitle } from '@mui/material';
+import { Box, Collapse, ButtonGroup, Button, IconButton, Paper, Dialog, LinearProgress, DialogTitle, DialogContentText, DialogActions } from '@mui/material';
 import { Adduser } from '../manipulation/adduser';
 import { Statusdialog } from '../manipulation/statusdailog';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
@@ -17,7 +17,8 @@ import { Link } from 'react-router-dom';
 
 
 export const Userdata = () => {
-    const [confirm,setConfirm]=useState()
+    const [confirm, setConfirm] = useState()
+    const [deleteuser, setDeleteuser]= useState()
     const [progress, setProgress] = useState(false)
     const [data, setdata] = useState([]);
     const [searchinput, setSearchinput] = useState()
@@ -43,15 +44,13 @@ export const Userdata = () => {
     }
 
     const handleDeleteuser = (item) => {
-        // if (window.confirm('Are you sure you wish to delete this item?'))
-        setConfirm(true)
-    
-        Axiosinstance.delete(`users/${item}`)
-            .then(response => {
+            Axiosinstance.delete(`users/${item}`)
+                .then(response => {
                     setstatus(true)
-                    console.log(response,response.status,204,"res");
-            })
-            .catch(err => console.log(err))
+                    setConfirm(false)
+                    console.log(response);
+                })
+                .catch(err => console.log(err))
     }
 
     const getUsers = () => {
@@ -67,7 +66,7 @@ export const Userdata = () => {
     };
 
     const handleOpen = (itemID) => {
-        setId(itemID === id ? itemID+222 : itemID)
+        setId(itemID === id ? itemID + 222 : itemID)
         setOpen(itemID === id ? false : true)
     }
 
@@ -76,6 +75,11 @@ export const Userdata = () => {
         getUsers()
 
     }, []);
+
+    const handleDelete = (item) => {
+        setConfirm(true)
+        setDeleteuser(item)
+    }
 
     return (
         <div>
@@ -126,12 +130,12 @@ export const Userdata = () => {
                                                 <TableCell align="left">{item.gender}</TableCell>
                                                 <TableCell align="left">{item.status}</TableCell>
                                                 <TableCell>
-                                                <IconButton onClick={() => handleAdduser(item)} style={{ color: "blue" }}>
-                                                    <EditIcon />
-                                                </IconButton>
-                                                <IconButton onClick={() => handleDeleteuser(item.id)}>
-                                                    <RemoveCircleOutlineIcon className='error' />
-                                                </IconButton>
+                                                    <IconButton onClick={() => handleAdduser(item)} style={{ color: "blue" }}>
+                                                        <EditIcon />
+                                                    </IconButton>
+                                                    <IconButton onClick={() => handleDelete(item.id)}>
+                                                        <RemoveCircleOutlineIcon className='error' />
+                                                    </IconButton>
                                                 </TableCell>
                                             </TableRow>
                                             <TableRow>
@@ -160,23 +164,35 @@ export const Userdata = () => {
                     </Table>
                 </TableContainer>
                 <div >
-                
                     {
-                         
-                        adduser && 
+                        confirm &&  
+                         <Dialog open={confirm} classes={{ paper: "dailogclass" }} >
+                            <DialogTitle style={{ padding: '16px 0px' }}>Confirm</DialogTitle>
+                            <DialogContentText>
+                                Do you want to delete the user?
+                            </DialogContentText>
+                            <DialogActions>
+                                <Button onClick={() => handleDeleteuser(deleteuser)}>delete</Button>
+                                <Button onClick={()=>setConfirm(false)}>Cancel</Button>
+                            </DialogActions>
+                        </Dialog>
+                    }
+
+                    {
+
+                        adduser &&
                         <Dialog className="dailogposition" open={adduser} >
-                            <DialogTitle style={{ display: "flex", justifyContent: 'space-between',backgroundColor: '#d3eff8' }}>
-                                {!!edituser.id? "Edit User": "Add User "}
-                                {/* {console.log(edituser,"edit")} */}
+                            <DialogTitle style={{ display: "flex", justifyContent: 'space-between', backgroundColor: '#d3eff8' }}>
+                                {!!edituser.id ? "Edit User" : "Add User "}
                                 <IconButton onClick={() => { setAdduser(false) }}>
-                                    <CancelOutlinedIcon style={{fontSize:'20px'}}/>
+                                    <CancelOutlinedIcon style={{ fontSize: '20px' }} />
                                 </IconButton>
                             </DialogTitle>
                             <Adduser id={edituser} close={handle} />
                         </Dialog>
                     }
-                    
-                    { 
+
+                    {
                         status && <Statusdialog status=" User deleted successfully" close={getUsers} />
                     }
                 </div>

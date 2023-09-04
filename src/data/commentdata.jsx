@@ -17,7 +17,7 @@ export const Commentdata = () => {
 
   return (
     <div>
-      <span style={{ fontSize: "30px" }}>Comment Data</span>
+      <span style={{ fontSize: "30px" }}>CommentsData</span>
       <hr />
       <TableContainer component={Paper} sx={{ height: 550, tableLayout: 'fixed' }}>
         <Table stickyHeader>

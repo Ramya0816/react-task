@@ -38,7 +38,8 @@
 }
 .Add{
   color:green;
-  margin-left: 10px;
+  margin-left:10px;
+  margin-right:5px;
 }
 .dailogposition{
   width: 100vw;
@@ -59,10 +60,10 @@
   height:20vh;
   padding: 20px;
 }
-.input{
+/* .input{
   display: flex ;
   justify-content: space-around;
-}
+} */
 .cancel{
   width: 100px;
   height:30px;

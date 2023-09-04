@@ -18,7 +18,7 @@ export const Tododata = () => {
 
   return (
     <div>
-      <span style={{ fontSize: "30px" }}>Todo Data</span>
+      <span style={{ fontSize: "30px" }}>TodosData</span>
       <hr />
       <TableContainer component={Paper} sx={{ height: 550, tableLayout: 'fixed' }}>
         <Table stickyHeader>
@@ -36,8 +36,6 @@ export const Tododata = () => {
                 progress && <LinearProgress />
               }
             </TableCell>
-
-
           </TableHead>
           <TableBody>
             {

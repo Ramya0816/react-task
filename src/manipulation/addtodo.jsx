@@ -4,8 +4,6 @@ import { Card, Grid } from "@mui/material";
 import { Statusdialog } from './statusdailog';
 import Axiosinstance from '../data/axiosinstance';
 
-
-
 export const Addtodo = (props) => {
 
     const [disable, setDisable] = useState(true)
@@ -75,7 +73,7 @@ export const Addtodo = (props) => {
                         <div className="error">{error.title}</div>
                     </Grid> 
                     <Grid item>
-                        <div>status:</div>
+                        <div>Status:</div>
                         <select name="status"onChange={handle} >
                                 <option hidden ></option>
                                 <option value="completed" >Completed</option>
@@ -96,10 +94,4 @@ export const Addtodo = (props) => {
         </div>
     )
 }
- {/* <Grid container direction={'row'} rowGap={4} margin={"50px"}> */}
-                 {/* <Grid  container direction={"column"} md={4} spacing={5} >
-                        <Grid item> <b>user_id:</b></Grid>
-                        <Grid item><b>Title:</b></Grid>
-                        <Grid item><b>status:</b></Grid>
-                    </Grid> */}
-                     {/* </Grid> */}
+ 

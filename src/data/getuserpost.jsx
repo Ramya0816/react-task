@@ -82,7 +82,7 @@ export const Getuserpost = () => {
       {
         openaddpost &&
         <Dialog className="dailogposition" open={openaddpost} >
-           <DialogTitle style={{ display: "flex", justifyContent:'space-between',backgroundColor:'#d3eff8'}}> Add Post Details
+           <DialogTitle style={{ display: "flex", justifyContent:'space-between',backgroundColor:'#d3eff8'}}> Add Post 
           <IconButton onClick={() => { setOpenaddpost(false) }}>
             < CancelOutlinedIcon style={{fontSize:'20px'}} />
           </IconButton>
@@ -92,5 +92,5 @@ export const Getuserpost = () => {
       }
     </div>
   )
-
+  
 }
