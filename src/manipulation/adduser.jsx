@@ -38,7 +38,7 @@ export const Adduser = (props) => {
             .then(response => { setstatus(true) })
             .catch(err => {
                 if (!!err) {
-                    seterror({ ...error, email: err.response.data.map(item => item.field + " " + item.message) })
+                    seterror({ ...error, email: err.response.data.map(item =>"This"+" "+item.field+" "+item.message) })
                     setDisable(true)
                 }
             })
@@ -66,7 +66,7 @@ export const Adduser = (props) => {
                 break;
             case "email":
                 if (newuser.email === "") {
-                    newError.email = "cannot be blank"
+                    newError.email = "email cannot be blank"
                 }
                 else if (!regex.test(newuser.email)) {
                     newError.email = "email is invalid"
